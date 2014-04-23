@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<jtlshop3plugin>
+    <Name>AGWS Nosto Tracking</Name>
+    <Description>Implementiert den Code für eComm-Tracking der Nosto Solutions Ltd</Description>
+    <Author>ag-websolutions.de, Gerd Rütten</Author>
+    <URL>http://www.ag-websolutions.de</URL>
+    <XMLVersion>102</XMLVersion>
+    <ShopVersion>316</ShopVersion>
+    <PluginID>agws_nosto_track</PluginID>
+    <Install>
+        <Version nr="100">
+            <CreateDate>2013-09-05</CreateDate>
+            <SQL>agws_nosto_track_init.sql</SQL>
+        </Version>
+        <Version nr="101">
+            <CreateDate>2013-11-09</CreateDate>
+        </Version>
+        <Hooks>
+            <Hook id="75">agws_nosto_track_integration.php</Hook>
+            <Hook id="140">agws_nosto_track_integration.php</Hook>
+        </Hooks>
+        <Adminmenu>
+            <Settingslink sort="1">
+                <Name>System-Einstellungen</Name>
+                <Setting type="text" initialValue="Y" sort="1" conf="N">
+                    <Name>Nosto-Track-Integration</Name>
+                    <Description></Description>
+                    <ValueName>agws_nosto_track_headline</ValueName>
+                </Setting>
+                <Setting type="text" initialValue="abc" sort="2" conf="Y">
+                    <Name>NOSTO-Accountname</Name>
+                    <Description></Description>
+                    <ValueName>agws_nosto_track_accountname</ValueName>
+                </Setting>
+                <Setting type="selectbox" initialValue="0" sort="3" conf="Y">
+                    <Name>Preis-Tracking:</Name>
+                    <Description>Tracken der Preise in brutto oder netto?</Description>
+                    <ValueName>agws_nosto_track_price</ValueName>
+                    <SelectboxOptions>
+                        <Option value="0" sort="1">Brutto</Option>
+                        <Option value="1" sort="2">Netto</Option>
+                    </SelectboxOptions>
+                </Setting>
+         	</Settingslink>
+            <Customlink sort="2">
+                <Name>Recommendations-Einstellungen</Name>
+			    <Filename>agws_nosto_track_recommendations.php</Filename>
+		    </Customlink>
+        </Adminmenu>
+    </Install>
+</jtlshop3plugin>
