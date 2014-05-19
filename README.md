@@ -19,21 +19,21 @@ service.
 
 By default the module creates the following nosto elements:
 
-| Page           | Rec Slot                                                          | Position |
-|----------------|-------------------------------------------------------------------|----------|
-| Warenkorb      | cartpage-nosto-1 : Customers Who Bought These Also Bought         | Bottom   |
-| Warenkorb      | cartpage-nosto-2 : Products You Recently Viewed                   | Bottom   |
-| Warenkorb      | cartpage-nosto-3: Most Popular Right Now                          | Bottom   |
-| Startseite     | Frontpage-nosto-1 : Items you considered                          | Middle   |
-| Startseite     | frontpage-nosto-2 : What other customers are looking at right now | Middle   |
-| Startseite     | frontpage-nosto-3 : Related to your past interests                | Middle   |
-| Startseite     | frontpage-nosto-4 : Hot sellers                                   | Middle   |
-| Alle Seiten    | pagetemplate-nosto-1 : Your Recent History                        | Bottom   |
-| Alle Seiten    | pagetemplate-nosto-2 : Items related to your interest             | Bottom   |
-| Artikelliste   | productcategory-nosto-1 : Most Popular Products In This Category  | Top      |
-| Artikelliste   | productcategory-nosto-2 : Your Recent History                     | Top      |
-| Artikeldetails | productpage-nosto-2 : You Might Also Like                         | Bottom   |
-| Artikeldetails | productpage-nosto-3 : Most Popular Products In This Category      | Bottom   |
+| Page           | Rec Slot                   | Description                                    | Position |
+|----------------|----------------------------|------------------------------------------------|----------|
+| Warenkorb      | `cartpage-nosto-1`         | Customers Who Bought These Also Bought         | Bottom   |
+| Warenkorb      | `cartpage-nosto-2`         | Products You Recently Viewed                   | Bottom   |
+| Warenkorb      | `cartpage-nosto-3`         | Most Popular Right Now                         | Bottom   |
+| Startseite     | `frontpage-nosto-1`        | Items you considered                           | Middle   |
+| Startseite     | `frontpage-nosto-2`        | What other customers are looking at right now  | Middle   |
+| Startseite     | `frontpage-nosto-3`        | Related to your past interests                 | Middle   |
+| Startseite     | `frontpage-nosto-4`        | Hot sellers                                    | Middle   |
+| Alle Seiten    | `pagetemplate-nosto-1`     | Your Recent History                            | Bottom   |
+| Alle Seiten    | `pagetemplate-nosto-2`     | Items related to your interest                 | Bottom   |
+| Artikelliste   | `productcategory-nosto-1`  | Most Popular Products In This Category         | Top      |
+| Artikelliste   | `productcategory-nosto-2`  | Your Recent History                            | Top      |
+| Artikeldetails | `productpage-nosto-2`      | You Might Also Like                            | Bottom   |
+| Artikeldetails | `productpage-nosto-3`      | Most Popular Products In This Category         | Bottom   |
 	
 
 Note that you can change what recommendations are shown in which nosto elements. You can also add additional elements
