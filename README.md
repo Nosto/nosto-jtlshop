@@ -34,7 +34,7 @@ By default the module creates the following nosto elements:
 | Artikelliste   | `productcategory-nosto-2`  | Your Recent History                            | Top      |
 | Artikeldetails | `productpage-nosto-2`      | You Might Also Like                            | Bottom   |
 | Artikeldetails | `productpage-nosto-3`      | Most Popular Products In This Category         | Bottom   |
-	
+| Artikelliste   | `searchpage-nosto-1`       | Customers who searched "$searchTerm" viewed    | Top      |
 
 Note that you can change what recommendations are shown in which nosto elements. You can also add additional elements
 to the site by simply dropping in div elements of the following format:
