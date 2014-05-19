@@ -53,6 +53,9 @@ selecting the plugin and clicking the "Installieren" button on the bottom of the
 Once you have installed the module, you need to configure it. This is done by clicking the "Plugins" menu, choosing "Plugins" and clicking "Nosto". This will open a new page with two tabs that allows you to configure your plugin:
 
 * The first tab is called "System-Einstellungen" which allows you to configure your account names. You should see an account name field for each language that you have enabled on your site. This allows you to use separate accounts for separate languages. If you'd like to use the same account for all languages, simply use the same account name in each field.
+
+[Imgur](http://i.imgur.com/8lMC4yS)
+
 * Recommendations-Einstellungen: This tab allows you to configure your recommendation slots. You can disable the defaults or remove them entirely, if you want to add your own elements to your layout templates manually.
   * Shop-Seite: This is the type of page on which you would like the recommendation-slot to appear. Commonly used pages are "Startseite" (front-page), "Warenkorb" (shopping-cart), "Alle Seiten" (every page), "Artikeldetails" (product-page) and "Artikelliste" (for both the category-page and the search-results).
   * CSS-Selektor: This is the CSS selector of the element before or after which the recommendation-slot should appear. The CSS selector uses the same selector syntax as jQuery. 
@@ -60,6 +63,9 @@ Once you have installed the module, you need to configure it. This is done by cl
   * Recommendations-Slot-ID: This is the identifier of the recommendation-slot and should map to a slot defined in your Nosto account.
   * Aktiv: This drowdown field allows you to enable or disable your recommendation-slot. 
   * Aktion: These buttons "Speichern" and "Löschen" allow you to save or delete your slot respectively.
+
+[Imgur](http://i.imgur.com/1rKuFG3) 
+  
 
 ## License
 
