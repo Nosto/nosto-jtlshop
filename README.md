@@ -19,26 +19,21 @@ service.
 
 By default the module creates the following nosto elements:
 
-* 3 elements for the product page
-	* "Other Customers Were Interested In" ( nosto-page-product1 )
-	* "You Might Also Like"  ( nosto-page-product2 )
-	* "Most Popular Products In This Category"  ( nosto-page-product3 )
-* 3 elements for the shopping cart page
-	* "Customers Who Bought These Also Bought" ( nosto-page-cart1 )
-	* "Products You Recently Viewed" ( nosto-page-cart2 )
-	* "Most Popular Right Now" ( nosto-page-cart3 )
-* 2 elements for the product category page, top and bottom
-	* "Most Popular Products In This Category" ( nosto-page-category1 )
-	* "Your Recent History" ( nosto-page-category2 )
-* 2 elements for the search results page, top and bottom
-	* "Customers who searched '{search term}' viewed" ( nosto-page-search1 )
-	* "Your Recent History" ( nosto-page-search2 )
-* 2 elements for the sidebars, 1 left and 1 right
-	* "Popular Products" ( nosto-column-left )
-	* "Products You Recently Viewed" ( nosto-column-right )
-* 2 elements for all pages, top and bottom
-	* "Products containing '{keywords}'" ( nosto-page-top )
-	* "Products You Recently Viewed" ( nosto-page-footer )
+| Page           | Rec Slot                                                          | Position |
+|----------------|-------------------------------------------------------------------|----------|
+| Warenkorb      | cartpage-nosto-1 : Customers Who Bought These Also Bought         | Bottom   |
+| Warenkorb      | cartpage-nosto-2 : Products You Recently Viewed                   | Bottom   |
+| Warenkorb      | cartpage-nosto-3: Most Popular Right Now                          | Bottom   |
+| Startseite     | Frontpage-nosto-1 : Items you considered                          | Middle   |
+| Startseite     | frontpage-nosto-2 : What other customers are looking at right now | Middle   |
+| Startseite     | frontpage-nosto-3 : Related to your past interests                | Middle   |
+| Startseite     | frontpage-nosto-4 : Hot sellers                                   | Middle   |
+| Alle Seiten    | pagetemplate-nosto-1 : Your Recent History                        | Bottom   |
+| Alle Seiten    | pagetemplate-nosto-2 : Items related to your interest             | Bottom   |
+| Artikelliste   | productcategory-nosto-1 : Most Popular Products In This Category  | Top      |
+| Artikelliste   | productcategory-nosto-2 : Your Recent History                     | Top      |
+| Artikeldetails | productpage-nosto-2 : You Might Also Like                         | Bottom   |
+| Artikeldetails | productpage-nosto-3 : Most Popular Products In This Category      | Bottom   |
 	
 
 Note that you can change what recommendations are shown in which nosto elements. You can also add additional elements
