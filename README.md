@@ -54,7 +54,7 @@ Once you have installed the module, you need to configure it. This is done by cl
 
 * The first tab is called "System-Einstellungen" which allows you to configure your account names. You should see an account name field for each language that you have enabled on your site. This allows you to use separate accounts for separate languages. If you'd like to use the same account for all languages, simply use the same account name in each field.
 
-[Imgur](http://i.imgur.com/8lMC4yS)
+![Imgur](http://i.imgur.com/8lMC4yS)
 
 * Recommendations-Einstellungen: This tab allows you to configure your recommendation slots. You can disable the defaults or remove them entirely, if you want to add your own elements to your layout templates manually.
   * Shop-Seite: This is the type of page on which you would like the recommendation-slot to appear. Commonly used pages are "Startseite" (front-page), "Warenkorb" (shopping-cart), "Alle Seiten" (every page), "Artikeldetails" (product-page) and "Artikelliste" (for both the category-page and the search-results).
@@ -64,7 +64,7 @@ Once you have installed the module, you need to configure it. This is done by cl
   * Aktiv: This drowdown field allows you to enable or disable your recommendation-slot. 
   * Aktion: These buttons "Speichern" and "Löschen" allow you to save or delete your slot respectively.
 
-[Imgur](http://i.imgur.com/1rKuFG3) 
+![Imgur](http://i.imgur.com/1rKuFG3) 
   
 
 ## License
