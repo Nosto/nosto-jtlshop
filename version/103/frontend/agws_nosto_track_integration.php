@@ -110,42 +110,48 @@ switch ($oPlugin->nCalledHook) {
             $agws_nosto_track_shoppingcart = str_replace("#SC_ITEM_BLOCK#", $agws_nosto_track_basket_items, $agws_nosto_track_basket_tmp);
         }
         
-        //Tracking von Artikeldetail- und Kategorieseiten
         switch (gibSeitenTyp()) {
+            //Generates the tagging block for the product page. There is no way to know that an item
+            //is discounted for the list-price, we use the MSRP if available or we use the gross
+            //alternate price.
             case PAGE_ARTIKEL: {
-                $agws_nosto_track_product = $smarty->get_template_vars('Artikel');
+                //Building the category information by gluing the navigation breadcrumbs
+                $product = $smarty->get_template_vars('Artikel');
                 $breadcrumb = $smarty->get_template_vars('Brotnavi');
                 $category = '';
                 for ($i = 1; $i < count($breadcrumb) - 1; $i++) {
                     $category .= '/' . $breadcrumb[$i]->name;
                 }
                 
-                $smarty->assign('agws_nosto_track_ArtURL', URL_SHOP . "/" . $agws_nosto_track_product->cURL);
-                $smarty->assign('agws_nosto_track_BildURL', URL_SHOP . "/" . $agws_nosto_track_product->Bilder[0]->cPfadGross);
-                $smarty->assign('agws_nosto_track_ArtNr', $agws_nosto_track_product->cArtNr);
-                $smarty->assign('agws_nosto_track_ArtName', $agws_nosto_track_product->cName);
+                $smarty->assign('agws_nosto_track_ArtURL', URL_SHOP . "/" . $product->cURL);
+                $smarty->assign('agws_nosto_track_BildURL', URL_SHOP . "/" . $product->Bilder[0]->cPfadGross);
+                $smarty->assign('agws_nosto_track_ArtNr', $product->cArtNr);
+                $smarty->assign('agws_nosto_track_ArtName', $product->cName);
                 $smarty->assign('agws_nosto_track_Category', $category);
-                $smarty->assign('agws_nosto_track_PreisNetto', sprintf("%01.2f", $agws_nosto_track_product->Preise->fVKBrutto));
-                $smarty->assign('agws_nosto_track_Beschreibung', $agws_nosto_track_product->cBeschreibung);
-                $smarty->assign('agws_nosto_track_Hersteller', $agws_nosto_track_product->cName_thersteller);
-                $smarty->assign('agws_nosto_track_ErstellDatum', $agws_nosto_track_product->dErstellt);
+                $smarty->assign('agws_nosto_track_PreisNetto', sprintf("%01.2f", $product->Preise->fVKBrutto));
+                $smarty->assign('agws_nosto_track_Beschreibung', $product->cBeschreibung);
+                $smarty->assign('agws_nosto_track_Hersteller', $product->cName_thersteller);
+                $smarty->assign('agws_nosto_track_ErstellDatum', $product->dErstellt);
                 
-                if ($agws_nosto_track_product->fUVPBrutto > 0) {
-                    $smarty->assign('agws_nosto_track_UVP', $agws_nosto_track_product->fUVPBrutto);
+                if ($product->fUVPBrutto > 0) {
+                    $smarty->assign('agws_nosto_track_UVP', $product->fUVPBrutto);
                 } else {
-                    if ($agws_nosto_track_product->alterVK[0] > 0) {
-                        $smarty->assign('agws_nosto_track_UVP', $agws_nosto_track_product->alterVK[0]);
+                    if ($product->alterVK[0] > 0) {
+                        $smarty->assign('agws_nosto_track_UVP', $product->alterVK[0]);
                     }
                 }
                 
-                $agws_nosto_track_productpages = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_productpages.tpl');
-                
+                $product_page = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_productpages.tpl');
                 break;
             }
-            
+
+            //Generates the tagging block for the category page and the search page. There is no
+            //way in the system to differentiate between the two so when the page is a search
+            //results page, we just put in an unknown category. 
             case PAGE_ARTIKELLISTE: {
                 $agws_nosto_track_category = $smarty->get_template_vars('oNavigationsinfo');
                 if (!empty($agws_nosto_track_category->cName)) {
+                    //Building the category information by gluing the navigation breadcrumbs
                     $breadcrumb = $smarty->get_template_vars('Brotnavi');
                     $category = '';
                     for ($i = 1; $i < count($breadcrumb); $i++) {
@@ -155,7 +161,8 @@ switch ($oPlugin->nCalledHook) {
                 } else {
                     $smarty->assign('agws_nosto_track_category', "unknown");
                 }
-                $agws_nosto_track_categorypages = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_categorypages.tpl');
+
+                $listings_page = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_categorypages.tpl');
                 break;
             }
         }
@@ -175,11 +182,11 @@ switch ($oPlugin->nCalledHook) {
             if ($agws_nosto_track_shoppingcart != "")
                 pq("body")->append($agws_nosto_track_shoppingcart);
             
-            if ($agws_nosto_track_productpages != "")
-                pq("body")->append($agws_nosto_track_productpages);
+            if ($product_page != "")
+                pq("body")->append($product_page);
             
-            if ($agws_nosto_track_categorypages != "")
-                pq("body")->append($agws_nosto_track_categorypages);
+            if ($listings_page != "")
+                pq("body")->append($listings_page);
             
             if ($agws_nosto_track_customer != "")
                 pq("body")->append($agws_nosto_track_customer);
@@ -192,8 +199,8 @@ switch ($oPlugin->nCalledHook) {
             $agws_nosto_track_script = "";
             $agws_nosto_track_order = "";
             $agws_nosto_track_shoppingcart = "";
-            $agws_nosto_track_productpages = "";
-            $agws_nosto_track_categorypages = "";
+            $product_page = "";
+            $listings_page = "";
             $agws_nosto_track_customer = "";
             
             break;
