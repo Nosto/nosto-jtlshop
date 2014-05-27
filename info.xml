@@ -19,6 +19,9 @@
             <CreateDate>2014-04-25</CreateDate>
             <SQL>nosto.sql</SQL>
         </Version>
+        <Version nr="103">
+            <CreateDate>2014-05-26</CreateDate>
+        </Version>
         <Hooks>
             <Hook id="75">agws_nosto_track_integration.php</Hook>
             <Hook id="140">agws_nosto_track_integration.php</Hook>
