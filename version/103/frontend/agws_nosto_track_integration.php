@@ -140,9 +140,20 @@ switch ($oPlugin->nCalledHook)
 				$smarty->assign('agws_nosto_track_Category', $category);
 				$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $agws_nosto_track_product->Preise->fVKBrutto));
 				$smarty->assign('agws_nosto_track_Beschreibung',$agws_nosto_track_product->cBeschreibung);
-            	$smarty->assign('agws_nosto_track_UVP',($agws_nosto_track_product->fUVP>0)?$agws_nosto_track_product->fUVP:'');
 				$smarty->assign('agws_nosto_track_Hersteller',$agws_nosto_track_product->cName_thersteller);
 				$smarty->assign('agws_nosto_track_ErstellDatum',$agws_nosto_track_product->dErstellt);
+				
+				if ($agws_nosto_track_product->fUVPBrutto > 0)
+				{
+					$smarty->assign('agws_nosto_track_UVP',$agws_nosto_track_product->fUVPBrutto);
+				}
+				else
+				{
+					if ($agws_nosto_track_product->alterVK[0] > 0)
+					{
+						$smarty->assign('agws_nosto_track_UVP',$agws_nosto_track_product->alterVK[0]);
+					}
+				}
 				
 				$agws_nosto_track_productpages = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_productpages.tpl');
 				
