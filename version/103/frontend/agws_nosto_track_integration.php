@@ -126,19 +126,23 @@ switch ($oPlugin->nCalledHook)
 			case PAGE_ARTIKEL:
 			{
 				$agws_nosto_track_product = $smarty->get_template_vars('Artikel');
-				$agws_nosto_track_BrotCount = count($smarty->get_template_vars('Brotnavi')) - 2;
-				$agws_nosto_track_BrotNavi = $smarty->get_template_vars('Brotnavi');
+				$breadcrumb = $smarty->get_template_vars('Brotnavi');
+                $category = '';
+                for ($i=1; $i<count($breadcrumb) - 1; $i++)
+                {
+                    $category .= '/'.$breadcrumb[$i]->name;
+                }
 				
 				$smarty->assign('agws_nosto_track_ArtURL',URL_SHOP."/".$agws_nosto_track_product->cURL);
 				$smarty->assign('agws_nosto_track_BildURL',URL_SHOP."/".$agws_nosto_track_product->Bilder[0]->cPfadGross);
 				$smarty->assign('agws_nosto_track_ArtNr',$agws_nosto_track_product->cArtNr);
 				$smarty->assign('agws_nosto_track_ArtName',$agws_nosto_track_product->cName);
-				$smarty->assign('agws_nosto_track_Category',$agws_nosto_track_BrotNavi[$agws_nosto_track_BrotCount]->name);
+				$smarty->assign('agws_nosto_track_Category', $category);
 				$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $agws_nosto_track_product->Preise->fVKBrutto));
-            	$smarty->assign('agws_nosto_track_Beschreibung',$agws_nosto_track_product->cBeschreibung);
+				$smarty->assign('agws_nosto_track_Beschreibung',$agws_nosto_track_product->cBeschreibung);
             	$smarty->assign('agws_nosto_track_UVP',($agws_nosto_track_product->fUVP>0)?$agws_nosto_track_product->fUVP:'');
-            	$smarty->assign('agws_nosto_track_Hersteller',$agws_nosto_track_product->cName_thersteller);
-            	$smarty->assign('agws_nosto_track_ErstellDatum',$agws_nosto_track_product->dErstellt);
+				$smarty->assign('agws_nosto_track_Hersteller',$agws_nosto_track_product->cName_thersteller);
+				$smarty->assign('agws_nosto_track_ErstellDatum',$agws_nosto_track_product->dErstellt);
 				
 				$agws_nosto_track_productpages = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_productpages.tpl');
 				
@@ -149,7 +153,13 @@ switch ($oPlugin->nCalledHook)
 			{		
 				$agws_nosto_track_category = $smarty->get_template_vars('oNavigationsinfo');
                 if (!empty($agws_nosto_track_category->cName)) {
-                    $smarty->assign('agws_nosto_track_category',$agws_nosto_track_category->cName);
+					$breadcrumb = $smarty->get_template_vars('Brotnavi');
+	                $category = '';
+	                for ($i=1; $i<count($breadcrumb); $i++)
+	                {
+	                    $category .= '/'.$breadcrumb[$i]->name;
+	                }
+                    $smarty->assign('agws_nosto_track_category', $category);
                 } else {
                     $smarty->assign('agws_nosto_track_category', "unknown");
                 }
