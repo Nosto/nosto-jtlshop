@@ -63,7 +63,7 @@ switch ($oPlugin->nCalledHook)
 
 					$smarty->assign('agws_nosto_track_ArtNr',$bestellung->Positionen[$i]->cArtNr);
 					$smarty->assign('agws_nosto_track_ArtName',$bestellung->Positionen[$i]->cName);
-					$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $bestellung->Positionen[$i]->Artikel->Preise->fVKNetto));
+					$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $bestellung->Positionen[$i]->Artikel->Preise->fVKBrutto));
 					$smarty->assign('agws_nosto_track_Anzahl',$bestellung->Positionen[$i]->nAnzahl);
 
 					$agws_nosto_track_order_items .= $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_ordercontent_2.tpl');
@@ -108,7 +108,7 @@ switch ($oPlugin->nCalledHook)
                         $smarty->assign('agws_nosto_track_ArtNr',$_SESSION['Warenkorb']->PositionenArr[$i]->cArtNr);
                     }
 					$smarty->assign('agws_nosto_track_ArtName',$agws_artikelName[$agws_oSprache->cISO]);
-					$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $_SESSION['Warenkorb']->PositionenArr[$i]->Artikel->Preise->fVKNetto));
+					$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $_SESSION['Warenkorb']->PositionenArr[$i]->Artikel->Preise->fVKBrutto));
 					$smarty->assign('agws_nosto_track_Anzahl',$_SESSION['Warenkorb']->PositionenArr[$i]->nAnzahl);
 
 					$agws_nosto_track_basket_items .= $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_shoppingcart_2.tpl');
@@ -134,7 +134,7 @@ switch ($oPlugin->nCalledHook)
 				$smarty->assign('agws_nosto_track_ArtNr',$agws_nosto_track_product->cArtNr);
 				$smarty->assign('agws_nosto_track_ArtName',$agws_nosto_track_product->cName);
 				$smarty->assign('agws_nosto_track_Category',$agws_nosto_track_BrotNavi[$agws_nosto_track_BrotCount]->name);
-            	$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $agws_nosto_track_product->Preise->fVKNetto));
+				$smarty->assign('agws_nosto_track_PreisNetto',sprintf("%01.2f", $agws_nosto_track_product->Preise->fVKBrutto));
             	$smarty->assign('agws_nosto_track_Beschreibung',$agws_nosto_track_product->cBeschreibung);
             	$smarty->assign('agws_nosto_track_UVP',($agws_nosto_track_product->fUVP>0)?$agws_nosto_track_product->fUVP:'');
             	$smarty->assign('agws_nosto_track_Hersteller',$agws_nosto_track_product->cName_thersteller);
