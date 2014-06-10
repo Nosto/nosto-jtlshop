@@ -35,7 +35,7 @@ if($_GET['step'] == "neu_nosto_recomm") {
 if($_GET['step'] == 'del_nosto_recomm') {
 
     $iNostoRecommendationsSlotID = $_GET['id'];
-    $GLOBALS["DB"]->executeQuery("DELETE FROM xplugin_agws_nosto_track_recommendations WHERE iNostoRecommendationsSlotID ='" . $iNostoRecommendationsSlotID . "'",4);
+    $GLOBALS["DB"]->deleteRow("xplugin_agws_nosto_track_recommendations", "iNostoRecommendationsSlotID", $iNostoRecommendationsSlotID);
     $cMitteilung = "Datensatz wurde erfolgreich gel&ouml;scht!";
     $bErrorFlag = 0;
 }
