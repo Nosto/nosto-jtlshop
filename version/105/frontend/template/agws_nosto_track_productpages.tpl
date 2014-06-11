@@ -4,8 +4,8 @@
 	<SPAN class=name>{$agws_nosto_track_ArtName}</SPAN> 
 	<SPAN class=image_url>{$agws_nosto_track_BildURL}</SPAN> 
 	<SPAN class=price>{$agws_nosto_track_PreisNetto}</SPAN> 
-	<SPAN class=price_currency_code>EUR</SPAN> 
-	<SPAN class=availability>InStock</SPAN> 
+	<SPAN class=price_currency_code>{$agws_nosto_track_Currency}</SPAN> 
+	<SPAN class=availability>{$agws_nosto_track_Availability}</SPAN> 
 	<SPAN class=category>{$agws_nosto_track_Category}</SPAN> 
 	
 	<!-- Optional properties -->
