@@ -132,7 +132,7 @@ switch ($oPlugin->nCalledHook) {
                 $smarty->assign('agws_nosto_track_Beschreibung', $product->cBeschreibung);
                 $smarty->assign('agws_nosto_track_Hersteller', $product->cName_thersteller);
                 $smarty->assign('agws_nosto_track_ErstellDatum', $product->dErstellt);
-                if ($product->cLagerBeachten == 'N' || $product->fLagerbestand > 0) {
+                if ($product->cLagerBeachten != 'Y' || $product->fLagerbestand > 0 || $product->cLagerKleinerNull == 'Y') {
                     $smarty->assign('agws_nosto_track_Availability', 'InStock');
                 } else {
                     $smarty->assign('agws_nosto_track_Availability', 'OutOfStock');
