@@ -7,7 +7,9 @@
 	<SPAN class=price_currency_code>{$agws_nosto_track_Currency}</SPAN> 
 	<SPAN class=availability>{$agws_nosto_track_Availability}</SPAN> 
 	<SPAN class=category>{$agws_nosto_track_Category}</SPAN> 
-	
+    {if $agws_nosto_track_Hersteller != ''}
+    <SPAN class=category>/{$agws_nosto_track_Hersteller}</SPAN> 
+    {/if}
 	<!-- Optional properties -->
 	<SPAN class=description>{$agws_nosto_track_Beschreibung}</SPAN> 
 	<SPAN class=list_price>{$agws_nosto_track_UVP}</SPAN> 
