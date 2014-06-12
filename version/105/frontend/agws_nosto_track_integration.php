@@ -42,6 +42,7 @@ switch ($oPlugin->nCalledHook) {
         
         //NOSTO-Track script im head
         $oSprache = new Sprache(true);
+        $currency = $GLOBALS['DB']->executeQuery("SELECT cISO FROM twaehrung WHERE cStandard = 'Y'", 1);
         $account = $GLOBALS['DB']->executeQuery('SELECT * FROM xplugin_agws_nosto_track_accounts WHERE kSprache = ' . $oSprache->kSprachISO, 1);
         $smarty->assign('agws_nosto_track_accountname', $account->cAccountID);
         $agws_nosto_track_script = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_script.tpl');
@@ -59,6 +60,7 @@ switch ($oPlugin->nCalledHook) {
                     $smarty->assign('agws_nosto_track_ArtName', $bestellung->Positionen[$i]->cName);
                     $smarty->assign('agws_nosto_track_PreisNetto', sprintf("%01.2f", $bestellung->Positionen[$i]->Artikel->Preise->fVKBrutto));
                     $smarty->assign('agws_nosto_track_Anzahl', $bestellung->Positionen[$i]->nAnzahl);
+                    $smarty->assign('agws_nosto_track_Currency', $currency->cISO);
                     
                     $agws_nosto_track_order_items .= $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_ordercontent_2.tpl');
                 }
@@ -100,6 +102,7 @@ switch ($oPlugin->nCalledHook) {
                     $smarty->assign('agws_nosto_track_ArtName', $agws_artikelName[$agws_oSprache->cISO]);
                     $smarty->assign('agws_nosto_track_PreisNetto', sprintf("%01.2f", $_SESSION['Warenkorb']->PositionenArr[$i]->Artikel->Preise->fVKBrutto));
                     $smarty->assign('agws_nosto_track_Anzahl', $_SESSION['Warenkorb']->PositionenArr[$i]->nAnzahl);
+                    $smarty->assign('agws_nosto_track_Currency', $currency->cISO);
                     
                     $agws_nosto_track_basket_items .= $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_shoppingcart_2.tpl');
                 }
@@ -132,12 +135,14 @@ switch ($oPlugin->nCalledHook) {
                 $smarty->assign('agws_nosto_track_Beschreibung', $product->cBeschreibung);
                 $smarty->assign('agws_nosto_track_Hersteller', $product->cName_thersteller);
                 $smarty->assign('agws_nosto_track_ErstellDatum', $product->dErstellt);
+                $smarty->assign('agws_nosto_track_Currency', $currency->cISO);
+
                 if ($product->cLagerBeachten != 'Y' || $product->fLagerbestand > 0 || $product->cLagerKleinerNull == 'Y') {
                     $smarty->assign('agws_nosto_track_Availability', 'InStock');
                 } else {
                     $smarty->assign('agws_nosto_track_Availability', 'OutOfStock');
                 }
-                
+
                 if ($product->fUVPBrutto > 0) {
                     $smarty->assign('agws_nosto_track_UVP', $product->fUVPBrutto);
                 } else {
