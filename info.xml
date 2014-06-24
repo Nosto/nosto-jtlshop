@@ -29,7 +29,7 @@
             <CreateDate>2014-06-11</CreateDate>
         </Version>
         <Version nr="106">
-            <CreateDate>2014-06-23</CreateDate>
+            <CreateDate>2014-06-24</CreateDate>
         </Version>
         <Hooks>
             <Hook id="75">agws_nosto_track_integration.php</Hook>
