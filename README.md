@@ -84,3 +84,5 @@ JTLShop version 3.x
 * 1.0.2
   * Support for language-specific accounts
   * Added support for default recommendation slots.
+* 1.0.6
+  * Better support for PayPal payments
