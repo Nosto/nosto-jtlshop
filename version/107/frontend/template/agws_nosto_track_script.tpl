@@ -1,3 +1,8 @@
+{if (isset($smarty.session.agws_nosto_track_orderflag) && $smarty.session.agws_nosto_track_orderflag > 0)}
+{literal}
+<script src="//my.nosto.com/include/example-jtlshop-stg" async></script>
+{/literal}
+{else}
 <script type="text/javascript">
 //<![CDATA[
 {literal}
@@ -8,3 +13,4 @@
 {/if}
 //]]>
 </script>
+{/if}
