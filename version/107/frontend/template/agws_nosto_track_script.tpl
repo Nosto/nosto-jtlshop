@@ -2,7 +2,7 @@
 <script src="//my.nosto.com/include/{$agws_nosto_track_accountname}"></script>
 <script type="text/javascript">
 {literal}
-nostojs(function(api) { api.sendTagging("nosto_purchase_order_ref"); });
+nosto.context.nosto.api.sendTagging("nosto_purchase_order_ref");
 {/literal}
 </script>
 {else}
