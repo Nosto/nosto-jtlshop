@@ -1,7 +1,5 @@
 {if (isset($smarty.session.agws_nosto_track_orderflag) && $smarty.session.agws_nosto_track_orderflag > 0)}
-{literal}
-<script src="//my.nosto.com/include/example-jtlshop-stg" async></script>
-{/literal}
+<script src="//my.nosto.com/include/{$agws_nosto_track_accountname}" async></script>
 {else}
 <script type="text/javascript">
 //<![CDATA[
