@@ -10,10 +10,3 @@
 		#OC_ITEM_BLOCK#
 	</DIV>
 </DIV>
-<SCRIPT type="text/javascript">
-//<![CDATA[
-{literal}
-  nostojs(function(api) { api.sendTagging("nosto_purchase_order_ref"); });
-{/literal}
-//]]>
-</SCRIPT>
