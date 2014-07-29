@@ -1,3 +1,11 @@
+{if (isset($smarty.session.agws_nosto_track_orderflag) && $smarty.session.agws_nosto_track_orderflag > 0)}
+<script src="//my.nosto.com/include/{$agws_nosto_track_accountname}"></script>
+<script type="text/javascript">
+{literal}
+nosto.context.nosto.api.sendTagging("nosto_purchase_order_ref");
+{/literal}
+</script>
+{else}
 <script type="text/javascript">
 //<![CDATA[
 {literal}
@@ -8,3 +16,4 @@
 {/if}
 //]]>
 </script>
+{/if}

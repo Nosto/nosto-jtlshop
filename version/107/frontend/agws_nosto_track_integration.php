@@ -46,7 +46,7 @@ switch ($oPlugin->nCalledHook) {
         $account = $GLOBALS['DB']->executeQuery('SELECT * FROM xplugin_agws_nosto_track_accounts WHERE kSprache = ' . $oSprache->kSprachISO, 1);
         $smarty->assign('agws_nosto_track_accountname', $account->cAccountID);
         $agws_nosto_track_script = $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_script.tpl');
-        
+
         //Tracking einer Bestellung
         if (isset($_SESSION['agws_nosto_track_orderflag']) && $_SESSION['agws_nosto_track_orderflag'] > 0) {
             $bestellid = $GLOBALS["DB"]->executeQuery("select * from tbestellung where kWarenkorb='" . $_SESSION['agws_nosto_track_orderflag'] . "'", 1);
@@ -65,7 +65,7 @@ switch ($oPlugin->nCalledHook) {
                     $agws_nosto_track_order_items .= $smarty->fetch($oPlugin->cFrontendPfad . 'template/agws_nosto_track_ordercontent_2.tpl');
                 }
             }
-            
+
             $smarty->assign('agws_nosto_track_BestellNr', $bestellung->cBestellNr);
             $smarty->assign('agws_nosto_track_KundeMail', $bestellung->oKunde->cMail);
             $smarty->assign('agws_nosto_track_KundeVorname', $bestellung->oKunde->cVorname);
@@ -184,22 +184,22 @@ switch ($oPlugin->nCalledHook) {
                 pq("head")->append($agws_nosto_recomm_css);
             
             if ($agws_nosto_track_script != "")
-                pq("head")->append($agws_nosto_track_script);
+                pq("body")->prepend($agws_nosto_track_script);
             
             if ($agws_nosto_track_order != "")
-                pq("body")->append($agws_nosto_track_order);
+                pq("body")->prepend($agws_nosto_track_order);
             
             if ($agws_nosto_track_shoppingcart != "")
-                pq("body")->append($agws_nosto_track_shoppingcart);
+                pq("body")->prepend($agws_nosto_track_shoppingcart);
             
             if ($product_page != "")
-                pq("body")->append($product_page);
+                pq("body")->prepend($product_page);
             
             if ($listings_page != "")
-                pq("body")->append($listings_page);
+                pq("body")->prepend($listings_page);
             
             if ($agws_nosto_track_customer != "")
-                pq("body")->append($agws_nosto_track_customer);
+                pq("body")->prepend($agws_nosto_track_customer);
             
             //aufraeumen
             if (isset($_SESSION['agws_nosto_track_orderflag']))
