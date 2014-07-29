@@ -31,6 +31,9 @@
         <Version nr="106">
             <CreateDate>2014-06-24</CreateDate>
         </Version>
+        <Version nr="107">
+            <CreateDate>2014-07-28</CreateDate>
+        </Version>
         <Hooks>
             <Hook id="75">agws_nosto_track_integration.php</Hook>
             <Hook id="140">agws_nosto_track_integration.php</Hook>
