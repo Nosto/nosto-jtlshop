@@ -2,7 +2,8 @@
 <script src="//my.nosto.com/include/{$agws_nosto_track_accountname}"></script>
 <script type="text/javascript">
 {literal}
-if (typeof nosto !== "undefined" && typeof $ !== "undefined" && typeof $.holdReady === "function") {
+if (typeof nosto !== "undefined" && typeof $ === "function" && typeof $.holdReady === "function") {
+    $('head').append('<style type="text/css">#paypal_button {display:none;}</style>');
     (function() {
         var releaseTimeout, readyReleased = false;
         function releaseReady() {
