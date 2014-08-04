@@ -2,6 +2,26 @@
 <script src="//my.nosto.com/include/{$agws_nosto_track_accountname}"></script>
 <script type="text/javascript">
 {literal}
+if (typeof nosto !== "undefined" && typeof $ === "function" && typeof $.holdReady === "function") {
+    $('head').append('<style type="text/css">#paypal_button {display:none;}</style>');
+    (function() {
+        var releaseTimeout, readyReleased = false;
+        function releaseReady() {
+            if (releaseTimeout) {
+                clearTimeout(releaseTimeout);
+                releaseTimeout = null;
+            }
+            if (!readyReleased) {
+                $.holdReady(false);
+                readyReleased = true;                
+            }
+        }
+        $.holdReady(true);
+        releaseTimeout = setTimeout(releaseReady, 5000);
+        nosto.context.nosto.api.listen("taggingsent", releaseReady);
+        
+    })();
+}
 nosto.context.nosto.api.sendTagging("nosto_purchase_order_ref");
 {/literal}
 </script>
